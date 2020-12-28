@@ -1,0 +1,10 @@
+reset
+set pm3d map
+set cbrange [-1.0*10**-10:1.0*10**-10]
+do for[i=0:1699]{\
+splot sprintf("Er_%d.dat", i) title sprintf("Er%d",i) with pm3;
+pause 0.0001}
+
+
+
+

@@ -1,0 +1,19 @@
+OBJS = cira.o igrf.o iridreg.o iriflip.o irifun.o irisub.o iritec.o iritest.o \
+	iri_sample.o
+
+all: iri_sample
+
+.PHONY: all clean
+
+iri_sample: $(OBJS)
+	g++ -o $@ $(OBJS) -lgfortran
+
+%.o: %.for
+	gfortran -c $< -Wall -O3
+
+%.o: %.cpp iri.h
+	g++ -c $< -Wall -O3
+
+clean:
+	rm -rf iri_sample *.o fort.7 output.dat
+
